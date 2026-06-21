@@ -103,7 +103,7 @@ END:VCARD`;
             </motion.a>
 
             <motion.a
-              href="https://wa.me/919022306452"
+              href="https://wa.me/919022306452?text=Hey%2C%20I%20would%20Like%20To%20Create%20A%20Hamper"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
