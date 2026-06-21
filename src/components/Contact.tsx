@@ -48,7 +48,7 @@ END:VCARD`;
   };
 
   return (
-    <section className="pt-24 pb-32 px-4 bg-gradient-to-br from-soft-beige/50 to-warm-cream relative z-10">
+    <section id="contact-section" className="pt-24 pb-32 px-4 bg-gradient-to-br from-soft-beige/50 to-warm-cream relative z-10">
       <div className="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute -top-10 -left-10 w-32 h-32 bg-daisy-yellow/20 rounded-full blur-2xl"></div>
