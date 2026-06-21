@@ -26,6 +26,27 @@ export const Contact = () => {
     alert('Link copied to clipboard!');
   };
 
+  const handleSaveContact = () => {
+    const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:The Moonlit Creations
+ORG:The Moonlit Creations
+TITLE:Handcrafted Luxury Gifting Hampers
+TEL;TYPE=CELL:+919022306452
+URL:https://www.instagram.com/the.moonlit_creations/
+END:VCARD`;
+
+    const blob = new Blob([vcard], { type: 'text/vcard' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'The_Moonlit_Creations.vcf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
+
   return (
     <section className="pt-24 pb-32 px-4 bg-gradient-to-br from-soft-beige/50 to-warm-cream relative z-10">
       <div className="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
@@ -94,7 +115,7 @@ export const Contact = () => {
             </motion.a>
 
             <motion.a
-              href="#"
+              href="tel:+919022306452"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center justify-center gap-2 bg-white px-4 py-3 rounded-full shadow-sm border border-dusty-mauve/10 hover:bg-white/80 transition-colors"
@@ -120,6 +141,7 @@ export const Contact = () => {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <motion.button
+              onClick={handleSaveContact}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 bg-lavender-pink text-white rounded-full shadow-md hover:bg-dusty-mauve flex items-center justify-center gap-2 text-sm uppercase tracking-wider font-medium transition-colors w-full sm:w-auto"
