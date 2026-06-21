@@ -1,0 +1,6 @@
+{
+  "name": "The Moonlit Creations",
+  "description": "A beautiful, premium, customized gifting and hamper brand digital business card.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
