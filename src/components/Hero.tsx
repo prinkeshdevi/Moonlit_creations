@@ -47,19 +47,38 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-6 flex flex-col items-center justify-center gap-2 text-lavender-pink drop-shadow-sm"
+        className="absolute bottom-8 flex flex-col items-center justify-center gap-3 z-30 group cursor-pointer"
+        onClick={() => {
+          const nextSection = document.getElementById('services-section');
+          if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+          else window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+        }}
       >
-        <span className="text-xs uppercase tracking-[0.25em] font-bold">Scroll to explore</span>
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
+        <motion.span 
+          animate={{ opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="bg-white/80 p-2.5 rounded-full shadow-md border border-lavender-pink/30 mt-1"
+          className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-extrabold bg-gradient-to-r from-lavender-pink via-dusty-mauve to-lavender-pink bg-clip-text text-transparent drop-shadow-sm"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <polyline points="19 12 12 19 5 12"></polyline>
-          </svg>
-        </motion.div>
+          Scroll to explore
+        </motion.span>
+        
+        <div className="relative flex items-center justify-center mt-1">
+          <motion.div 
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 bg-lavender-pink rounded-full blur-[2px]"
+          />
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="bg-white p-3 rounded-full shadow-[0_0_20px_rgba(238,187,204,0.6)] border border-lavender-pink/40 relative z-10 group-hover:bg-lavender-pink/10 transition-colors"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-dusty-mauve" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
