@@ -20,7 +20,7 @@ const highlights = [
 
 export const Services = () => {
   return (
-    <section className="pt-24 pb-32 px-4 bg-warm-cream relative overflow-hidden">
+    <section id="services-section" className="pt-24 pb-32 px-4 bg-warm-cream relative overflow-hidden">
       {/* Soft Background Accents */}
       <div className="absolute top-0 left-[-10%] w-[30rem] h-[30rem] bg-soft-beige/60 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-[-10%] w-[25rem] h-[25rem] bg-lavender-pink/5 rounded-full blur-[90px] pointer-events-none" />
@@ -92,6 +92,46 @@ export const Services = () => {
 
 
       </div>
+
+      {/* Scroll Down Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center gap-3 z-30 group cursor-pointer"
+        onClick={() => {
+          const nextSection = document.getElementById('contact-section');
+          if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+          else window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+        }}
+      >
+        <motion.span 
+          animate={{ opacity: [0.6, 1, 0.6] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-extrabold bg-gradient-to-r from-lavender-pink via-dusty-mauve to-lavender-pink bg-clip-text text-transparent drop-shadow-sm"
+        >
+          Scroll to explore
+        </motion.span>
+        
+        <div className="relative flex items-center justify-center mt-1">
+          <motion.div 
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 bg-lavender-pink rounded-full blur-[2px]"
+          />
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="bg-white p-3 rounded-full shadow-[0_0_20px_rgba(238,187,204,0.6)] border border-lavender-pink/40 relative z-10 group-hover:bg-lavender-pink/10 transition-colors"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-dusty-mauve" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+          </motion.div>
+        </div>
+      </motion.div>
     </section>
   );
 };
